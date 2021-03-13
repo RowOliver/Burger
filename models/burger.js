@@ -10,7 +10,7 @@ var burger = {
     },
     //CRUD 
     insertOne: function(vals, callback) {
-        orm.insertOne("burgers". "burger_name", vals, function(res){
+        orm.insertOne("burgers", "burger_name", vals, function(res){
             console.log("Inserted a burger to be devoured", vals)
             callback(res);
         })
@@ -23,10 +23,12 @@ var burger = {
         });
     }
     //delete, figure out error 
-    deleteOne: function(id, callback) {
-        orm.deleteOne(id, function(res){
-            callback(res);
-        });
-    }
+    // deleteOne: function(id, callback) {
+    //     orm.deleteOne(id, function(res){
+    //         callback(res);
+    //     });
+    // }
 
 }
+
+module.exports = burger;
