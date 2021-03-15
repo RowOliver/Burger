@@ -1,12 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+               <br>
+                  <br>
+         <h1 class= "titleText">Hungry?</h1> 
+         <br>
+     </div>
+</div>
 
+<div class="row">
+    <div class="col-12">
+        <center> <img scr="/assets/css/burgerIcon.png" class="icon"></center>
+
+        <br>
+        <br>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 addBurger">
+        <h3 class="secondHeading">Add a burger!</h3>
+        <div class="centerSubmit">
+            <form class="create-update-form" action="/insertOne" method="POST">
+            <div class="form-group">
+                <textarea type="text" name="burger_name"></textarea>
+                <button class="btn btn-warning" type="submit"> add a burger! </button>
+
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6 burger">
+        <h3 class="secondHeading"> Feature Burger</h3>
+        <br>
+        <ul>
+            {{#each burger}}
+            {{#unless this.devoured}}
+            <div class="showBurger">
+                <p>
+                    {{this.burger}}</p>
+                <form action="/updateOne/{{this.id}}" method="POST">
+                <input type="hidden" name="devoured" value="1">
+                <button type="submit" class="btn btn-warning">eat the burger!</button>
+                </form>
+                <br>
+            </div>
+            {{/unless}}
+            {{/each}}
+        </ul>
+    </div>
+</div>
+
+<div class="col-6 devoured">
+    <h3 class="secondHeading">Burger Devoured</h3>
+    <br>
+    <ul>
+        {{#each burger}}
+        {{#if this.devoured}}
+        <div clas="devourBurger">
+            <p>
+                {{this.burger_name}}</p> 
+           <form action="/deleteOne/{{this.id}}" method="POST">
+           <button type="submit" class="btn btn-warning">delete the burger! </button>
+           </form>
+           {{/if}} 
+           {{/each}}
+            </ul>        
+        </div> 
+</div>
+</div>
+
+<hr>
+
+</div>

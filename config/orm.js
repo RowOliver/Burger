@@ -1,6 +1,7 @@
 //ORM(object relational mapping) to be able to:
 // CRUD functions 
 
+
 var connection = require("./connection");
 
 var orm = {
@@ -23,7 +24,7 @@ var orm = {
     },
 
     updateOne: function(colVal, id, callback) {
-        var queryString = "UPSTE burgers SET devoured='1' WHERE " + id + ";";
+        var queryString = "UPDATE burgers SET devoured='1' WHERE " + id + ";";
         connection.query(queryString, [id], function(err, result){
             if (err) throw err;
             callback(result);
