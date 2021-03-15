@@ -4,20 +4,22 @@ var exphbs = require("express-handlebars");
 var bodyParser = require("body-parser");
 var routes = require("./controllers/burger_controller.js");
 
-
-//create routes 
-//express call 
-var app = express();
-
 //local host port 
 var PORT = process.env.PORT || 8080;
 
-app.use()
+ 
+
+//express call 
+var app = express();
 
 app.use(express.static("public"));
 
+//middelware/ body-parser
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+
 
 app.engine("handlebars", exphbs({
     defaultLayout: "main"
@@ -25,7 +27,7 @@ app.engine("handlebars", exphbs({
 
 app.set("view engine", "handlebars");
 
-app.use(routes);
+
 
 app.listen(PORT, function(){
     console.log("Listening on Port:" + PORT);
