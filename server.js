@@ -1,34 +1,34 @@
+//require express
 var express = require("express");
-var mysql = require("mysql");
+//require express-handlebars
 var exphbs = require("express-handlebars");
+//require body-parser
 var bodyParser = require("body-parser");
+//require burgers_controllers
 var routes = require("./controllers/burger_controller.js");
-
-//local host port 
+//express call using app
+var app = express();
+//local host port 8080
 var PORT = process.env.PORT || 8080;
 
- 
-
-//express call 
-var app = express();
-
+//public folder
 app.use(express.static("public"));
 
-//middelware/ body-parser
-
+//parses JSON
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
-
+//handlebars run using main for content
 app.engine("handlebars", exphbs({
     defaultLayout: "main"
 }));
 
 app.set("view engine", "handlebars");
 
+//calls api routes
+app.use(routes);
 
 
 app.listen(PORT, function(){
-    console.log("Listening on Port:" + PORT);
+console.log("Listening on Port: " + PORT);
 });
