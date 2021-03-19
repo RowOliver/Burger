@@ -11,7 +11,6 @@ router.get("/", function(req, res) {
         res.render("index", burgerData);
     });
 });
-
 // Create/post Request
 
 router.post("/insertOne", function(req, res){
