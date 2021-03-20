@@ -15,7 +15,7 @@ router.get("/", function(req, res) {
 // Create/post Request
 
 router.post("/insertOne", function(req, res){
-    burger.insertOne(req.body.burger_name, function (vals){
+    burger.insertOne(req.body.burger_name, function (colVals){
         res.redirect("/")
     });
 });
